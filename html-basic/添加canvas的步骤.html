@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>添加canvas的步骤</title>
+	</head>
+	<body>
+		<canvas id="myCanvas" width="300" height="200" style="border: 1px solid #c3c3c3;" >
+			Your brower does not support the canvas element.
+		</canvas>
+		
+		<script type="text/javascript">
+			var c = document.getElementById('myCanvas');
+			var cxt = c.getContext("2d");
+			cxt.fillStyle = "#FF0000";
+			cxt.fillRect(0, 0, 150, 75);
+		</script>
+		
+	</body>
+</html>
