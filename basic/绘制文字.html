@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>绘制文字</title>
+        
+    </head>
+    <body>
+        <canvas id="my_canvas" width="200" height="200" style="border: 1px solid #ff0000;">
+        </canvas>
+        <script type="text/javascript">
+            var canvas = document.getElementById('my_canvas');
+            if(canvas == null) {
+                alert("canvas is null");
+            }
+            var context = canvas.getContext('2d');
+            // 线条颜色为 蓝色：#00f
+            context.fillStyle = '#00f';
+            context.textAlign = 'left';
+            context.textBaseline = 'top';
+            
+            //实心字 
+            context.font = 'italic 30px 微软雅黑';
+            context.fillText('生日快乐', 0, 0, 50);
+            
+            // 空心字
+            context.font = 'italic 30px 微软雅黑';
+            context.strokeText('生日快乐！', 0, 50, 100); 
+        </script>
+    </body>
+</html>

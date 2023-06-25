@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>绘制图像平铺</title>
+</head>
+
+<body onload="draw('canvas')"   >
+    <h1>图形平铺</h1>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        function draw(id) {
+            var canvas = document.getElementById(id);
+            if(canvas == null) {
+                return false;
+            }
+            var context = canvas.getContext('2d');
+            context.fillStyle = "#eeeeff";
+            context.fillRect(0, 0, 800, 600);
+            var image = new Image();
+            image.src = "images/flower-small.png";
+            image.onload = function() {
+                var ptrn = context.createPattern(image, 'repeat');
+                context.fillStyle = ptrn;
+                context.fillRect(0, 0, 800, 600);
+            } 
+        }
+    </script>
+
+</body>
+
+</html>
