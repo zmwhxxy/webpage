@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>保存文件</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="500" height="500" style="border: 1px solid blue;">
+            Your broswer does not support the canvas element.
+        </canvas>
+        <script type="text/javascript">
+            var c = document.getElementById('myCanvas');
+            var ctx = c.getContext('2d');
+            ctx.fillStyle = 'rgb(0,0,255)';
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.fillStyle = 'rgb(0,255,0)';
+            ctx.fillRect(10, 20, 50, 50);
+
+            // 保存到文件(这种方法被浏览器禁用了)
+            window.location = ctx.canvas.toDataURL('image/png');
+        </script>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>绘制火柴棒人物</title>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="500" height="300" style="border: 1px solid blue;" >
+            Your browser does not support the canvas element.
+        </canvas>
+        <script type="text/javascript" >
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+            
+            // 绘制脸蛋
+            context.beginPath();
+            context.arc(100, 50, 30, 0, Math.PI*2, true);
+            context.fill();
+
+            // 绘制嘴巴
+            context.beginPath();
+            context.strokeStyle = '#c00';
+            context.lineWidth = 3;
+            context.arc(100, 50, 20, 0, Math.PI, false);
+            context.stroke();
+
+            // 绘制眼睛
+            context.beginPath();
+            context.fillStyle = '#c00';
+            context.arc(90, 45, 3, 0, Math.PI*2, true);
+            context.fill();
+            context.moveTo(113, 45);
+            context.arc(110, 45, 3, 0, Math.PI*2, true);
+            context.fill();
+            context.stroke();
+
+            // 绘制身躯
+            context.moveTo(100, 80);
+            context.lineTo(100, 150);
+
+            context.moveTo(100, 100);
+            context.lineTo(60, 120);
+            
+            context.moveTo(100, 100);
+            context.lineTo(140, 120);
+
+            context.moveTo(100, 150);
+            context.lineTo(80, 190);
+
+            context.moveTo(100, 150);
+            context.lineTo(140, 190);
+            context.stroke();
+        </script>
+    </body>
+</html>
