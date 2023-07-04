@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设置字体的颜色</title>
+        <style>
+            body{
+                color: red;
+            }
+            h1{
+                color: #0f0;
+            }
+            p.ex{
+                color: rgb(0, 0, 255);
+            }
+            p.hs{
+                color: hsl(0,75%, 50%);
+            }
+            p.ha{
+                color: hsla(120, 50%, 50%, 1);
+            }
+            p.ra{
+                color: rgba(125, 10, 45, 0.5);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>《青玉案 元夕》</h1>
+        <p>
+            众里寻他千百度，蓦然回首，那人却在灯火阑珊处。
+        </p>
+        <p class="ex">
+            众里寻他千百度，蓦然回首，那人却在灯火阑珊处。  （该段落定义了class="ex"。文本的颜色是蓝色的。）
+        </p>
+        <p class="hs">
+            众里寻他千百度，蓦然回首，那人却在灯火阑珊处。  （该段落定义了class="hs"。使用hsl函数，建颜色。）
+        </p>
+        <p class="ha">
+            众里寻他千百度，蓦然回首，那人却在灯火阑珊处。  （该段落定义了class="ha"。使用hsla函数，建颜色。）
+        </p>
+        <p class="ra">
+            众里寻他千百度，蓦然回首，那人却在灯火阑珊处。  （该段落定义了class="ra"。使用rgba函数构，建颜色。）
+        </p>
+    </body>
+</html>
