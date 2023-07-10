@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>设置文本的溢出效果</title>
+    </head>
+    <body>
+        <style>
+            .test_demo_clip{
+                text-overflow: clip;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 200px;
+                background: #ccc;
+            }
+            .test_demo_ellipsis{
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 200px;
+                background: #ccc;
+            }
+        </style>
+        <h2>text-overflow: clip</h2>
+        <div class="test_demo_clip">
+            不显示省略标记，而是简单的裁切条
+        </div>
+        <h2>text-overflow: ellipsis</h2>
+        <div class="test_demo_ellipsis">
+            显示省略标记，不是简单的裁切条
+        </div>
+
+    </body>
+</html>
