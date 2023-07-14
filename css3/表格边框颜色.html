@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>表格边框颜色</title>
+    <style>
+        input{
+            color: #cad9ea;
+        }
+        input.txt{
+            border: 1px inset #cad9ea;
+            background-color: #add8e6;
+        }
+        input.btn{
+            color: 00008b;
+            background-color: #add8e6;
+            border: 1px outset #cad9ea;
+            padding: 1px 2px 1px 2px;
+        }
+        select{
+            width: 80px;
+            color: #00008b;
+            background-color: #add8e6;
+            border: 1px solid #cad9ea;
+        }
+        textarea{
+            width: 200px;
+            height: 40px;
+            color: #00008b;
+            background: #add8e6;
+            border: 1px inset #cad9ea;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>注册画面</h3>
+    <table border="1" width="45%">
+        <form action="" method="post">
+            <tr>
+                <td width="30%">昵称：</td>
+                <td><input type="text" class="txt">1-20个字符<div id="qq"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>密码：</td>
+                <td><input type="password">长度为6～16位</td>
+            </tr>
+            <tr>
+                <td>确认密码：</td>
+                <td><input type="password"></td>
+            </tr>
+            <tr>
+                <td>真实姓名：</td>
+                <td><input type="username1"></td>
+            </tr>
+            <tr>
+                <td>性别：</td>
+                <td>
+                    <select>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>备注：</td>
+                <td>
+                    <textarea cols="35" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="button" value="提交" class="btn"></td>
+                <td><input type="reset" value="重填" ></td>
+            </tr>
+        </form>
+    </table>
+</body>
+
+</html>

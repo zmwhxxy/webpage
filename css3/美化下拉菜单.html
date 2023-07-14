@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>美化下拉菜单</title>
+    <style>
+        #blue{
+            background-color: #7598fb;
+            color: #000000;
+            font-size: 15px;
+            font-weight: bolder;
+            font-family: "楷体-简";
+        }
+        #yellow{
+            background-color: yellow;
+            color: #000000;
+            font-size: 15px;
+            font-weight: bolder;
+            font-family: "楷体-简";
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="">
+        <p>
+            <label for="color">选择暴雪预警信号级别：</label>
+            <select name="color" id="color">
+                <option value="">请选择</option>
+                <option value="blue" id="blue" >暴雪蓝色预警信号</option>
+                <option id="yellow" value="yellow">暴雪黄色预警信号</option>
+                <option id="orange" value="orange">暴雪橙色预警信号</option>
+                <option id="red" value="red">暴雪红色预警信号</option>
+            </select>
+        </p>
+        <p>
+            <input type="submit" value="提交">
+        </p>
+    </form>
+</body>
+
+</html>
