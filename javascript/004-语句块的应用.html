@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>语句块的应用</title>
+    </head>
+    <body>
+        <h1>语句块的应用</h1>
+        <p id="myPar">我是一个段落。</p>
+        <div id="myDiv">我是一个div块。</div>
+        <p>
+            <button type="button" onclick="myFunction()">点击这里</button>
+        </p>
+        <script type="text/javascript">
+            function myFunction(){
+                document.getElementById("myPar").innerHTML = "Hello Javascript";
+                document.getElementById("myDiv").innerHTML = "How are you?";
+            }
+        </script>
+        <p>当你点击上面的按钮时，两个元素会改变。</p>
+    </body>
+</html>
