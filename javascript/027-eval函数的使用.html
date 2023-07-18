@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>eval函数的使用</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function computer(num){
+                return eval(num) + eval(num);
+            }
+
+            document.write("执行语句eval(123)+eval(123)的结果是：");
+            document.write(computer('123'));
+        </script>
+    </body>
+</html>

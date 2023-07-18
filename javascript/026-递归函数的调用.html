@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>递归函数的调用</title>
+        <script type="text/javascript">
+            var msg = "\n函数的递归调用： \n\n";
+            function Test(){
+                var result;
+                msg += "调用语句：\n";
+                msg += "        result = sum(20);\n";
+                msg += "调用步骤：\n";
+                result = sum(20);
+                msg += "计算结果：\n";
+                msg += "        result = " + result + "\n";
+                alert(msg);
+            }
+
+            function sum(m){
+                if(m == 0){
+                    msg += "        语句：sum("+ m + ") = " + m + "; \n";
+                    return 0;
+                } else {
+                    msg += "        语句：sum("+ m + ") = " + m + "+sum(" + (m-2) + "); \n";
+                    result = m+sum(m-2);
+                }
+                return result;
+            }
+        </script>
+    </head>
+    <body>
+        <center>
+            <form action="">
+                <input type="button" value="测试" onclick="Test()">
+            </form>
+        </center>
+    </body>
+</html>

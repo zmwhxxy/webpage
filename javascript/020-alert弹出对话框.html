@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>弹出对话框</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            //页面加载时执行函数
+            function showEnter(){
+                alert("尊敬的客户，欢迎光临本网站");
+            }
+
+            function showLeave(){
+                alert("欢迎下次光临！");
+            }
+
+            window.onload=showEnter;
+            window.onbeforeunload=showLeave;
+        </script>
+    </body>
+</html>
