@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>escape和unescape函数的使用</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            document.write("由于空格符对应的编码是%20，感叹号对应的编码是%21，"+"<br>");
+            document.write("<br>"+"故，执行语句escape('hello world!')后，结果为：");
+            document.write(escape('hello world!'));
+
+            document.write('<br><br>');
+
+            document.write("执行语句unescape(hello%20world%21)后，结果为：");
+            document.write(unescape('hello%20world%21'));
+        </script>
+    </body>
+</html>
