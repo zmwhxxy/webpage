@@ -2,6 +2,35 @@
 <html>
     <head>
         <title>购物简易计算器</title>
+        <style>
+            /*定义计算器块信息*/
+            section{
+                background-color: #c9e495;
+                width: 260px;
+                height: 320px;
+                text-align: center;
+            }
+            .textBaroder{
+                border-width: 1px;
+                border-style: solid;
+            }
+        </style>
+        <script type="text/javascript">
+            function compute(op) {
+                var num1, num2;
+                num1 = parseFloat(document.myform.txtNum1.value);
+                num2 = parseFloat(document.myform.txtNum2.value);
+                if(op == "+") {
+                    document.myform.txtResult.value = num1 + num2;
+                } else if(op == "-") {
+                    document.myform.txtResult.value = num1 - num2;
+                } else if(op == "*") {
+                    document.myform.txtResult.value = num1 * num2;
+                } else if(op == "÷") {
+                    document.myform.txtResult.value = num1 / num2;
+                }
+            }
+        </script>
     </head>
     <body>
         <section>
@@ -10,7 +39,14 @@
                 欢迎你来墨宝！
             </h1>
             <form action="" method="post" name="myform" id="myform">
-                
+                <h3><img src="images/logo.png" alt="logo.png" width="54" >购物简易计算器</h3>
+                <p>第一个数<input name="txtNum1" type="text" class="textBarorder" id="txtNum1" size="25"></p>
+                <p>第二个数<input name="txtNum2" type="text" class="textBarorder" id="txtNum2" size="25"></p>
+                <input type="button" name="addButton2" id="addButton2" value=" + " onclick="compute('+')">
+                <input type="button" name="subButton2" id="subButton2" value=" - " onclick="compute('-')">
+                <input type="button" name="mulButton2" id="mulButton2" value=" * " onclick="compute('*')">
+                <input type="button" name="divButton2" id="divButton2" value=" ÷ " onclick="compute('÷')">
+                <p>计算结果：<input type="text" name="txtResult" class="textBaroder" id="txtResult" size="25"></p>
             </form>
         </section>
     </body>
