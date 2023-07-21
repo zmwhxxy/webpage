@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>制作闪烁图片</title>
+    </head>
+    <body onload="soccerOnload()" topmargin="0">
+        <div id="soccer" style="position: absolute; left: 150px; top: 0px;">
+            <a href=""><img src="images/logo.png" alt="logo" border="0"></a>
+        </div>
+        <script language="javascript">
+            var msecs = 500;
+            var counter = 0;
+            
+            function soccerOnload() {
+                setTimeout("blink()", msecs);
+            }
+
+            function blink() {
+                soccer.style.visibility = (soccer.style.visibility == "hidden")? "visible" : "hidden";
+                counter += 1;
+                setTimeout("blink()", msecs);
+            }
+        </script>
+    </body>
+</html>
