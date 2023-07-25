@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>字符串对象</title>
+    </head>
+    <body>
+        <form action="" method="post" name="myform" id="myform">
+            <input type="text" name="txtString" >
+            <input type="button" value="检  查" onclick="isRight(document.myform.txtString.value)">
+        </form>
+
+        <script type="text/javascript">
+            function isRight(subChar) {
+                var findChar = "abcdefghijklmnopqrstuvwxyz1234567890-";
+                for(var i=0; i<subChar.length; i++) {
+                    //在 findChar中查找输入字符串的字符
+                    if(findChar.indexOf(subChar.charAt(i) == -1)) {
+                        alert("你的字符串不合法");
+                        return;
+                    }
+                }
+                alert("你的字符串合法");
+            }
+
+            var txt = "Hello World";
+            document.write("字符串“Hello World”的长度为：" + txt.length);
+
+        </script>
+    </body>
+</html>
