@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>数组对象</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            var arr = new Array(3);
+
+            // 判断arr是不是数组（通过构造函数）
+            if(arr.constructor == Array) {
+                document.write("arr是数组对象<br>");
+            }
+
+            // 获取数组的长度
+            arr[0] = "John";
+            arr[1] = "Andy";
+            arr[2] = "Wendy";
+            document.write("数组arr长度是：" + arr.length + "<br>");
+
+            // 修改数组的长度(数组空间自动扩展2个单位并初始化为undefined)
+            arr.length = 5;
+            document.write("数组arr长度是：" + arr.length + "<br>");
+            
+            // 给数组添加属性和方法（使用关键字 prototype）
+            Array.prototype.outAll = function(ar) {
+                for(var i=0; i < this.length; i++) {
+                    document.write(this[i]);
+                    document.write(ar);
+                }
+                document.write("<br>");
+            }
+            arr.outAll(", ");
+
+            // concat：链接两个或多个素组，并返回结果
+            var arr2 = new Array(2);
+            arr2[0] = 100;
+            arr2[1] = 220;
+            var arr3 = arr.concat(arr2);
+            arr3.outAll(", ");
+            var arr4 = arr2.concat(arr);
+            arr4.outAll(", ");
+
+            // pop删除数组最后一个元素
+            arr4.pop();
+            arr4.outAll(", ");
+            arr4.pop();
+            arr4.outAll(", ");
+
+            // join: 把数组中的所有元素放入一个字符串。元素通过制定分隔符进行分隔。
+            document.write(arr4.join("-"));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>日期对象的使用</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            // 以当前时间创建一个日期对象
+            var myDate1 = new Date();
+            document.write("myDate1所代表的时间是：" + myDate1.toLocaleString() + "<br>");
+
+            // 将字符串转化为日期对象
+            var myDate2 = new Date("June 10,2010");
+            document.write("myDate2所代表的时间是：" + myDate2.toLocaleString() + "<br>");
+            
+            // 将字符串转化为日期对象
+            var myDate3 = new Date("2010/6/10");
+            document.write("myDate3所代表的时间是：" + myDate3.toLocaleString() + "<br>");
+           
+            // 将字符串转化为日期对象
+            var myDate3 = new Date("2010/6/10");
+            document.write("myDate3所代表的时间是：" + myDate3.toLocaleString() + "<br>");
+            
+             // 将字符串转化为日期对象
+            var myDate3 = new Date("2010/6/10");
+            document.write("myDate3所代表的时间是：" + myDate3.toLocaleString() + "<br>");
+
+            // 当前月的第几天
+            var myDate4 = myDate1.getDate();
+            document.write("myDate4所代表的时间是：" + myDate4.toLocaleString() + "<br>");
+
+            //当前周的第几天
+            var myDate5 = myDate1.getDay();
+            document.write("myDate5所代表的时间是：" + myDate5.toLocaleString() + "<br>");
+
+            // 获取当前月份对应的数字-1
+            var myDate6 = myDate1.getMonth();
+            document.write("myDate6所代表的时间是：" + myDate6.toLocaleString() + "<br>");
+
+            // 获取当前的年份
+            var myDate7 = myDate1.getFullYear();
+            document.write("myDate7所代表的时间是：" + myDate7.toLocaleString() + "<br>");
+
+            // 获取当前时间的小时
+            var myDate8 = myDate1.getHours();
+            document.write("myDate8所代表的时间是：" + myDate8.toLocaleString() + "<br>");
+
+            // 获取当前时间的分钟
+            var myDate9 = myDate1.getMinutes();
+            document.write("myDate9所代表的时间是：" + myDate9.toLocaleString() + "<br>");
+
+            // 获取当前时间的秒数
+            var myDate10 = myDate1.getSeconds();
+            document.write("myDate10所代表的时间是：" + myDate10.toLocaleString() + "<br>");
+
+            // 获取1970年1月1日至今的毫秒数
+            var myDate12 = myDate1.getTime();
+            document.write("myDate12所代表的时间是：" + myDate12.toLocaleString() + "<br>");
+        </script>
+    </body>
+</html>

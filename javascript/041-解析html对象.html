@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>解析html对象</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            window.onload = function() {
+                //通过document.documentElement获取根节点 ==> html
+                var zhwHtml = document.documentElement;
+                // 打印根节点名称 HTML大写
+                alert(zhwHtml.nodeName);
+
+                // 获取body标签节点
+                var zhwBody = document.body;
+                // 打印body标签节点名称
+                alert(zhwBody.nodeName);
+
+                // 获取body的一个字节点
+                var fH = zhwBody.firstChild;
+                alert(fH + "body的第一个子节点");
+
+                // 获取body的最后一个子节点
+                var lH = zhwBody.lastChild;
+                alert(lH + "body的最后一个子节点");
+
+                var ht = document.getElementById("zhw");
+                alert(ht.nodeName);
+
+                var text = ht.childNodes;
+                alert(text.length);
+                var txt = ht.firstChild;
+                alert(txt.nodeName);
+                alert(txt.nodeValue);
+                alert(ht.innerHTML);
+                alert(ht.innerText + "Text");
+            }
+        </script>
+        <h1 id="zhw">我是一个内容节点</h1>
+    </body>
+</html>
