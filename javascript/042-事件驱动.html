@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript事件驱动</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function countTotal() {
+                var elements = document.getElementsByTagName("input")
+                window.alert("input类型节点总数是：" + elements.length);
+            }
+            function anchorElement() {
+                window.alert("按钮的value是：" + document.form1.Submit.value);
+            }
+        </script>
+        <table>
+            <form action="" name="form1" method="post">
+                <tr>
+                    <td>&nbsp;用户名</td>
+                    <td>&nbsp;<input type="text" name="input1" value=""></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;密&nbsp;&nbsp;&nbsp;码</td>
+                    <td>&nbsp;<input type="password" name="password1" value=""></td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" id="submit" name="Submit" value="提交"></td>
+                </tr>
+            </form>
+        </table>
+
+        <a href="javascript:void(0)" onclick="countTotal();">
+            统计input子节点总数
+        </a>
+
+        <br>
+        <a href="javascript:void(0)" onclick="anchorElement();">
+            获取提交按钮内容
+        </a>
+    </body>
+</html>
