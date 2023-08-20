@@ -1,6 +1,29 @@
+<?php
+
+session_start();
+
+include("classes/connect.php");
+include("classes/login.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = new Login();
+    $result = $login->evaluate($_POST);
+    if ($result == "") {
+    } else {
+        echo "<pre>";
+        print_r($result);
+        echo "</pre>";
+    }
+}
+
+
+
+
+?>
+
+
+
 <html>
-
-
 
 <head>
     <title>Mybook | Login</title>
@@ -15,9 +38,11 @@
     <div class="bar2">
         Log in to Mybook <br><br>
 
-        <input type="email" class="text2" placeholder="Email"> <br><br>
-        <input type="password" class="text2" placeholder="Password"> <br><br>
-        <input type="submit" class="button2" value="Log in"> 
+        <form action="login.php" method="post">
+            <input name="email" type="email" class="text2" placeholder="Email"> <br><br>
+            <input name="password" type="password" class="text2" placeholder="Password"> <br><br>
+            <input type="submit" class="button2" value="Log in">
+        </form>
     </div>
 </body>
 

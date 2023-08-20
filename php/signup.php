@@ -4,24 +4,16 @@ include("classes/connect.php");
 include("classes/signup.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
     $signup = new Signup();
-    
     $result = $signup->evaluate($_POST);
-    if($result != "") {
-        echo "<pre>";
+    if ($result == "") {
+        print_r("signup success!");
+    } else {
         print_r($result);
-        echo "</pre>";
-
-        $DB = new Database();
-        $DB->save($result);
+        // header("Location: signup.php");
+        die;
     }
-
-    // echo "<pre>";
-    // print_r($_POST);
-    // echo "</pre>";
 }
-
 
 
 

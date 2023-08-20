@@ -1,94 +1,28 @@
+<?php
+
+session_start();
+
+print_r($_SESSION);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?>
+
+
+
 <html>
-<style>
-    body {
-        font-family: "tahoma";
-        background-color: #a0d8e4;
-    }
-
-    .blue_bar {
-        height: 50px;
-        background-color: #405d9b;
-        color: #d9dfeb;
-    }
-
-    .search_box {
-        width: 400px;
-        height: 20px;
-        border-radius: 5px;
-        border: none;
-        padding: 4px;
-        font-size: 14px;
-        background-image: url(images/search.svg);
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-
-    .profile_pic {
-        width: 150px;
-        margin-top: -200px;
-        border-radius: 50%;
-        border: solid 2px white;
-    }
-
-    .menu_button {
-        width: 100px;
-        display: inline-block;
-        margin: 2px;
-    }
-
-    .friends_img {
-        width: 75px;
-        float: left;
-        margin: 8px;
-    }
-
-    .friends_bar {
-        background-color: white;
-        min-height: 840px;
-        margin-top: 20px;
-        color: #aaa;
-        padding: 8px;
-    }
-
-    .friends {
-        clear: both;
-        font-size: 12px;
-        font-weight: bold;
-        color: #405d9b;
-    }
-
-    textarea {
-        width: 100%;
-        border: none;
-        font-family: Tahoma;
-        font-size: 14px;
-        height: 100px;
-    }
-
-    .post_button {
-        float: right;
-        background-color: #405d9b;
-        border: none;
-        color: white;
-        padding: 4px;
-        font-size: 14px;
-        border-radius: 2px;
-        width: 50px;
-    }
-
-    .post_bar {
-        margin-top: 20px;
-        background-color: white;
-        padding: 10px;
-    }
-
-    .post {
-        padding: 4px;
-        font-size: 13px;
-        display: flex;
-        margin-bottom: 20px;
-    }
-</style>
 
 <head>
     <title>Profile | Mybook</title>
@@ -360,5 +294,97 @@
 
 
 </body>
+
+<style>
+    body {
+        font-family: "tahoma";
+        background-color: #a0d8e4;
+    }
+
+    .blue_bar {
+        height: 50px;
+        background-color: #405d9b;
+        color: #d9dfeb;
+    }
+
+    .search_box {
+        width: 400px;
+        height: 20px;
+        border-radius: 5px;
+        border: none;
+        padding: 4px;
+        font-size: 14px;
+        background-image: url(images/search.svg);
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+
+    .profile_pic {
+        width: 150px;
+        margin-top: -200px;
+        border-radius: 50%;
+        border: solid 2px white;
+    }
+
+    .menu_button {
+        width: 100px;
+        display: inline-block;
+        margin: 2px;
+    }
+
+    .friends_img {
+        width: 75px;
+        float: left;
+        margin: 8px;
+    }
+
+    .friends_bar {
+        background-color: white;
+        min-height: 840px;
+        margin-top: 20px;
+        color: #aaa;
+        padding: 8px;
+    }
+
+    .friends {
+        clear: both;
+        font-size: 12px;
+        font-weight: bold;
+        color: #405d9b;
+    }
+
+    textarea {
+        width: 100%;
+        border: none;
+        font-family: Tahoma;
+        font-size: 14px;
+        height: 100px;
+    }
+
+    .post_button {
+        float: right;
+        background-color: #405d9b;
+        border: none;
+        color: white;
+        padding: 4px;
+        font-size: 14px;
+        border-radius: 2px;
+        width: 50px;
+    }
+
+    .post_bar {
+        margin-top: 20px;
+        background-color: white;
+        padding: 10px;
+    }
+
+    .post {
+        padding: 4px;
+        font-size: 13px;
+        display: flex;
+        margin-bottom: 20px;
+    }
+</style>
+
 
 </html>
