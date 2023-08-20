@@ -34,12 +34,12 @@ class Signup
             }
         }
 
-        if($data['password'] != $data['password2']) {
+        if ($data['password'] != $data['password2']) {
             $this->error .= "password doesn't equal password2!<br>";
         }
 
         if ($this->error == "") {
-            if ($this->create_user($data) == false) {
+            if (!$this->create_user($data)) {
                 $this->error .= "fail to create user!<br>";
             }
         }
@@ -49,21 +49,30 @@ class Signup
 
     public function create_user($data)
     {
-        $DB = new Database();
-
-        $userid = $this->create_userid();
-        $first_name = $data['first_name'];
-        $last_name = $data['last_name'];
-        $gender = $data['gender'];
+        //验证邮箱是否已注册
         $email = $data['email'];
-        $password = $data['password'];
-        $url_address = strtolower($first_name) . "." . strtolower($last_name);
+        $query = "select * from users where email = '$email' limit 1";
+        $DB = new Database();
+        $result = $DB->read($query);
+        if ($result) {
+            $this->error .= "The email has been registered!<br>";
+        } else {
+            $userid = $this->create_userid();
+            $first_name = $data['first_name'];
+            $last_name = $data['last_name'];
+            $gender = $data['gender'];
 
-        $query = "insert into 
-        users (userid,first_name,last_name,gender,email,password,url_address) 
-        value ('$userid', '$first_name', '$last_name', '$gender', '$email', '$password', '$url_address')";
+            $password = $data['password'];
+            $url_address = strtolower($first_name) . "." . strtolower($last_name);
 
-        return $DB->save($query);
+            $query = "insert into 
+            users (userid,first_name,last_name,gender,email,password,url_address) 
+            value ('$userid', '$first_name', '$last_name', '$gender', '$email', '$password', '$url_address')";
+
+            return $DB->save($query);
+        }
+
+        return false;
     }
 
     private function create_userid()
