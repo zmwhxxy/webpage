@@ -1,0 +1,17 @@
+body {
+    font-family: "tahoma";
+    background-color: #a0d8e4;
+}
+
+.profile_pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: solid 2px white;
+}
+
+.post_bar {
+    margin-top: 20px;
+    background-color: white;
+    padding: 10px;
+}

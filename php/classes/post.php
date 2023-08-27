@@ -16,7 +16,7 @@ class Post{
             $DB->save($query);
 
         } else {
-            $this->error .= "Please type something to post!<br>";
+            $this->error .= "留言内容不能为空";
         }
 
         return $this->error;

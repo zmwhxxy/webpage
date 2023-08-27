@@ -15,15 +15,12 @@ $user_data = $login->check_login($id);
 $post = new Post();
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    $result = $post->create_post($id, $_POST);
-    if ($result == "") {
+    $errors = $post->create_post($id, $_POST);
+    if ($errors == "") {
         header("Location: profile.php");
         die;
     } else {
-        echo "<div style='text-align:center; font-size:120x; color:white; background-color:grey;'></div>";
-        echo "<br>The following errors occured:<br><br>";
-        echo $result;
-        echo "</div>";
+        include "components/errors.php";
     }
 }
 
@@ -42,13 +39,14 @@ $friends = $user->get_friends($id)
 
 <head>
     <title>Profile | Mybook</title>
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 
 <body>
     <br>
     <!-- top bar:header.php -->
     <?php
-        include("header.php");
+    include("components/header.php");
     ?>
 
     <!-- cover area -->
@@ -56,23 +54,15 @@ $friends = $user->get_friends($id)
 
         <div style="background-color: white; text-align: center; color: #405d9b; ">
             <img src="<?php echo $user_data['cover_image']; ?>" alt="mountain" style="width: 100%;">
+            <img src="<?php echo $user_data['profile_image']; ?>" alt="selfie" class="profile_pic profile_ext"> <br>
             <span style="font-size: 12px;">
-                <img src="<?php echo $user_data['profile_image']; ?>" alt="selfie" class="profile_pic"> <br>
-
-                <a style="text-decoration: none; color:#f0f;" href="change_profile_image.php?change=profile_image">Change Image</a>
-                <!-- <span>|</span>
-                <a style="text-decoration: none; color:#f0f;" href="change_profile_image.php?change=cover_image">Change Cover</a> -->
+                <a style="text-decoration: none; color:#f0f;" href="change.php?change=profile_image">更换形象</a>
+                <span>|</span>
+                <a style="text-decoration: none; color:#f0f;" href="change.php?change=cover_image">更换封面</a>
             </span>
+            <div style="font-size: 20px; margin-top: -40px; color: white;"><?php echo $user_data['last_name'] . " " . $user_data['first_name'] ?></div>
             <br>
-            <div style="font-size: 20px; margin-top: -40px; color: white;"><?php echo $user_data['first_name'] . $user_data['last_name'] ?></div>
-            <br>
-            <a href="index.php">
-                <div class="menu_button">Timeline</div>
-            </a>
-            <div class="menu_button">About </div>
-            <div class="menu_button">Friends </div>
-            <div class="menu_button">Photos </div>
-            <div class="menu_button">Settings</div>
+            <?php include "components/menubar.php"; ?>
         </div>
 
         <!-- blew cover area -->
@@ -83,12 +73,11 @@ $friends = $user->get_friends($id)
                 <div class="friends_bar">
                     Friends <br>
                     <?php
-                        if ($friends) 
-                        {
-                            foreach($friends as $friend_row) {
-                                include("user.php");
-                            }
+                    if ($friends) {
+                        foreach ($friends as $friend_row) {
+                            include("user.php");
                         }
+                    }
                     ?>
                 </div>
             </div>
@@ -96,15 +85,7 @@ $friends = $user->get_friends($id)
             <!-- posts area -->
             <div style="min-height: 400px; flex: 5; padding: 20px; padding-right: 0px;">
 
-                <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                    <form action="" method="post">
-                        <textarea name="post" placeholder="What's no your mind?"></textarea>
-                        <input class="post_button" type="submit" value="Post">
-                        <br>
-                        <br>
-                    </form>
-
-                </div>
+                <?php include "components/message_board.php" ?>
 
                 <!-- posts -->
                 <div class="post_bar">
@@ -113,7 +94,7 @@ $friends = $user->get_friends($id)
                         foreach ($posts as $postinfo) {
                             $user = new User();
                             $userinfo = $user->get_user($postinfo['userid']);
-                            include("post.php");
+                            include("components/post.php");
                         }
                     }
                     ?>
@@ -129,47 +110,8 @@ $friends = $user->get_friends($id)
 </body>
 
 <style>
-    body {
-        font-family: "tahoma";
-        background-color: #a0d8e4;
-    }
-
-    .blue_bar {
-        height: 50px;
-        background-color: #405d9b;
-        color: #d9dfeb;
-    }
-
-    .search_box {
-        width: 400px;
-        height: 20px;
-        border-radius: 5px;
-        border: none;
-        padding: 4px;
-        font-size: 14px;
-        background-image: url(images/search.svg);
-        background-repeat: no-repeat;
-        background-position: right;
-    }
-
-    .profile_pic {
-        width: 150px;
-        height: 150px;
+    .profile_ext {
         margin-top: -200px;
-        border-radius: 50%;
-        border: solid 2px white;
-    }
-
-    .menu_button {
-        width: 100px;
-        display: inline-block;
-        margin: 2px;
-    }
-
-    .friends_img {
-        width: 75px;
-        float: left;
-        margin: 8px;
     }
 
     .friends_bar {
@@ -178,45 +120,6 @@ $friends = $user->get_friends($id)
         margin-top: 20px;
         color: #aaa;
         padding: 8px;
-    }
-
-    .friends {
-        clear: both;
-        font-size: 12px;
-        font-weight: bold;
-        color: #405d9b;
-    }
-
-    textarea {
-        width: 100%;
-        border: none;
-        font-family: Tahoma;
-        font-size: 14px;
-        height: 100px;
-    }
-
-    .post_button {
-        float: right;
-        background-color: #405d9b;
-        border: none;
-        color: white;
-        padding: 4px;
-        font-size: 14px;
-        border-radius: 2px;
-        width: 50px;
-    }
-
-    .post_bar {
-        margin-top: 20px;
-        background-color: white;
-        padding: 10px;
-    }
-
-    .post {
-        padding: 4px;
-        font-size: 13px;
-        display: flex;
-        margin-bottom: 20px;
     }
 </style>
 
