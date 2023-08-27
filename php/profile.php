@@ -2,21 +2,37 @@
 
 session_start();
 
-print_r($_SESSION);
+include("classes/connect.php");
+include("classes/login.php");
+include("classes/user.php");
+include("classes/post.php");
 
 
+$id = $_SESSION['mybook_userid'];
+$login = new Login();
+$user_data = $login->check_login($id);
 
+$post = new Post();
 
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $result = $post->create_post($id, $_POST);
+    if ($result == "") {
+        header("Location: profile.php");
+        die;
+    } else {
+        echo "<div style='text-align:center; font-size:120x; color:white; background-color:grey;'></div>";
+        echo "<br>The following errors occured:<br><br>";
+        echo $result;
+        echo "</div>";
+    }
+}
 
+// collect posts
+$posts = $post->get_posts($id);
 
-
-
-
-
-
-
-
-
+// collect friends
+$user = new User();
+$friends = $user->get_friends($id)
 
 ?>
 
@@ -30,24 +46,29 @@ print_r($_SESSION);
 
 <body>
     <br>
-    <!-- top bar -->
-    <div class="blue_bar">
-        <div style="width: 800px; margin: auto; font-size: 30px;">
-            Mybook &nbsp;&nbsp; <input type="text" class="search_box" placeholder="Search for people">
-            <img src="images/selfie.jpg" alt="selfie.jpg" style="width: 50px; float: right;">
-        </div>
-    </div>
+    <!-- top bar:header.php -->
+    <?php
+        include("header.php");
+    ?>
 
     <!-- cover area -->
     <div style="width: 800px; margin: auto; min-height: 400px;">
 
         <div style="background-color: white; text-align: center; color: #405d9b; ">
-            <img src="images/mountain.jpg" alt="mountain" style="width: 100%;">
-            <img src="images/selfie.jpg" alt="selfie" class="profile_pic">
+            <img src="<?php echo $user_data['cover_image']; ?>" alt="mountain" style="width: 100%;">
+            <span style="font-size: 12px;">
+                <img src="<?php echo $user_data['profile_image']; ?>" alt="selfie" class="profile_pic"> <br>
+
+                <a style="text-decoration: none; color:#f0f;" href="change_profile_image.php?change=profile_image">Change Image</a>
+                <!-- <span>|</span>
+                <a style="text-decoration: none; color:#f0f;" href="change_profile_image.php?change=cover_image">Change Cover</a> -->
+            </span>
             <br>
-            <div style="font-size: 20px; margin-top: -40px; color: white;">Mary Banda</div>
+            <div style="font-size: 20px; margin-top: -40px; color: white;"><?php echo $user_data['first_name'] . $user_data['last_name'] ?></div>
             <br>
-            <div class="menu_button">Timeline</div>
+            <a href="index.php">
+                <div class="menu_button">Timeline</div>
+            </a>
             <div class="menu_button">About </div>
             <div class="menu_button">Friends </div>
             <div class="menu_button">Photos </div>
@@ -61,229 +82,41 @@ print_r($_SESSION);
 
                 <div class="friends_bar">
                     Friends <br>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user1.jpg" alt="user1">
-                        <br>
-                        Jim
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user2.jpg" alt="user1">
-                        <br>
-                        Lida
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user3.jpg" alt="user1">
-                        <br>
-                        King
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user4.jpg" alt="user1">
-                        <br>
-                        Rose
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user5.jpg" alt="user1">
-                        <br>
-                        Mary
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user6.jpg" alt="user1">
-                        <br>
-                        Joe
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user7.jpg" alt="user1">
-                        <br>
-                        Ella
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user8.jpg" alt="user1">
-                        <br>
-                        Kate
-                    </div>
-                    <div class="friends">
-                        <img class="friends_img" src="images/user9.jpg" alt="user1">
-                        <br>
-                        Mark
-                    </div>
+                    <?php
+                        if ($friends) 
+                        {
+                            foreach($friends as $friend_row) {
+                                include("user.php");
+                            }
+                        }
+                    ?>
                 </div>
-
-
             </div>
 
             <!-- posts area -->
             <div style="min-height: 400px; flex: 5; padding: 20px; padding-right: 0px;">
 
                 <div style="border: solid thin #aaa; padding: 10px; background-color: white;">
-                    <textarea placeholder="What's no your mind?"></textarea>
-                    <input class="post_button" type="submit" value="Post">
-                    <br>
-                    <br>
+                    <form action="" method="post">
+                        <textarea name="post" placeholder="What's no your mind?"></textarea>
+                        <input class="post_button" type="submit" value="Post">
+                        <br>
+                        <br>
+                    </form>
+
                 </div>
 
                 <!-- posts -->
                 <div class="post_bar">
-
-                    <div class="post">
-                        <div>
-                            <img src="images/user1.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Jim</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user1.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Jim</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user5.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Mary</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user8.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Kate</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user6.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Joe</div>
-                           
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user1.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Jim</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
-                    <div class="post">
-                        <div>
-                            <img src="images/user1.jpg" alt="user1" style="width: 75px; margin-right: 4px; ">
-                        </div>
-
-                        <div>
-                            <div class="friends">Jim</div>
-                            My coat and my umbrella please.
-                            Here is my ticket.
-                            Thank you, sir.
-                            Number five.
-                            Here's your umbrella and your coat.
-                            This is not my umbrella.
-                            Sorry sir.
-                            Is this your umbrella?
-                            No, it isn't.
-                            Is this it?
-                            Yes, it is.
-                            Thank you very much.
-                            <br><br>
-
-                            <a href="">Like</a> . <a href="">Comment</a> . <span style="color: #999;">8/23 2023<span>
-                        </div>
-                    </div>
+                    <?php
+                    if ($posts) {
+                        foreach ($posts as $postinfo) {
+                            $user = new User();
+                            $userinfo = $user->get_user($postinfo['userid']);
+                            include("post.php");
+                        }
+                    }
+                    ?>
                 </div>
 
 
@@ -321,6 +154,7 @@ print_r($_SESSION);
 
     .profile_pic {
         width: 150px;
+        height: 150px;
         margin-top: -200px;
         border-radius: 50%;
         border: solid 2px white;

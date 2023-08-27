@@ -2,6 +2,9 @@
 
 session_start();
 
+$email = "";
+$password = "";
+
 include("classes/connect.php");
 include("classes/login.php");
 
@@ -9,14 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login = new Login();
     $result = $login->evaluate($_POST);
     if ($result == "") {
+        header("Location: profile.php");
+        die;
     } else {
-        echo "<pre>";
-        print_r($result);
-        echo "</pre>";
+        echo "<script>alert('{$result}')</script>";
     }
+
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 }
-
-
 
 
 ?>
@@ -32,15 +36,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="bar1">
         <div class="text1">Mybook</div>
-        <div class="button1">Signup</div>
+        <a href="signup.php">
+            <div class="button1">Signup</div>
+        </a>
     </div>
 
     <div class="bar2">
         Log in to Mybook <br><br>
 
-        <form action="login.php" method="post">
-            <input name="email" type="email" class="text2" placeholder="Email"> <br><br>
-            <input name="password" type="password" class="text2" placeholder="Password"> <br><br>
+        <form action="" method="post">
+            <input name="email" value="<?php echo $email ?>" type="email" class="text2" placeholder="Email"> <br><br>
+            <input name="password" value="<?php echo $password ?>" type="password" class="text2" placeholder="Password"> <br><br>
             <input type="submit" class="button2" value="Log in">
         </form>
     </div>
