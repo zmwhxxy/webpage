@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>面向对象基础</title>
+		<script type="text/javascript">
+			/*
+			1. JavaScript是什么?
+			答:JavaScript是一种可以用来给网页增加交互性的编程语言.
+			它由三部分组成:
+				a. 核心(ECMAScript): 描述了该语言的语法和基本对象.
+				b. 文档对象模型(DOM): 描述了处理网页内容的方法和接口.
+				c. 浏览器对象模型(BOM): 描述了与浏览器进行交互的方法和接口.
+			
+			
+			2. JavaScript的起源:Netscape公司开发的,根java没任何关系.
+			只是但是java比较火,Netscape公司借助Java的一种市场营销手段.
+			
+			
+			3. JavaScript可以做什么?
+			主要用于web开发.
+			
+			4. JavaScript的基本类型有哪些?
+			答:基本数据类型有7种: undefined, Null, Boolean, 字符串(string),
+			数值(number), 对象(object)和Symbol.
+			
+			5. JavaScript的复合数据类型有哪些?
+			答: Array, Date, Number, String, Boolean, Object, RegExp, Math,
+			Function.
+			
+			6. JavaScript的空类有哪2个?
+			答: Null  和  undefined.
+			
+			7. JavaScript中获得类型的运算符是:typeof.
+			typeof 返回值类型是string.
+			
+			8. in 关键字的使用:
+			它是用来判断某个属性是否为某个对象所拥有.
+			
+			9. JavaScript中,对象就是键值对集合.
+			
+			JavaScript中两个等号 == 和 三个等号 === 的区别
+			
+			10. == 和 === 的区别:
+			(1)  "=="叫做相等运算符，"==="叫做严格运算符。
+			(2) ==，equality -> 等同  的意思， 两边值类型不同的时候，要先进行类型转换为同一类型后，再比较值是否相等。 
+			===，identity -> 恒等 的意思，不做类型转换，类型不同的结果一定不等。 
+			(3) "=="表示只要值相等即可为真，而"==="则要求不仅值相等，而且也要求类型相同。
+			
+			11. javascript中创建对象使用 new 关键字, 也可以使用直接量(字面量).
+			
+			12. 值类型和引用类型区别: 
+			(1) 按值传递:将变量的值拷贝一份, 赋值给新的变量或者函数的实参数.
+				var num = 123;
+				var num2 = num;
+				此时内存中有2份123的副本.
+			
+			(2) 引用类型传递:将变量的地址赋值给新的变量或者函数的实参数. 
+				var o = {n:123};
+				var o2 = o;
+				此时内存中只有一个数据副本, 只是将o的地址赋值给了o2;
+			
+			
+			
+			var arr = [1, 2, 3, 4, 5, 6];
+			arr.a = 12;
+			alert(arr.a);
+			
+			arr.func = function () {
+				alert(typeof arr);
+			};
+			
+			arr.func();
+			*/
+			
+			// var arr = [1, 2, 3, 4];
+			// 
+			// arr.a = 12;
+			// 
+			// this事件是指当前发生事件的对象
+			// arr.show = function () {
+			// 	alert(this.a);
+			// };
+			// 
+			// arr.show();
+			
+			window.onload = function () {
+				var oBtn1 = document.getElementById('btn1');
+				oBtn1.onclick = function () {
+					alert(this.value);
+				};
+			}
+		</script>
+	</head>
+	<body>
+		<input id="btn1" type="button" value="this关键字用法" />
+	</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>表单隔行变色</title>
+		<script>
+			window.onload = function() {
+				var oTab = document.getElementById('tab1');
+				var oldColor = '';
+				
+				for (var i = 0; i < oTab.tBodies[0].rows.length; i++) {
+					
+					oTab.tBodies[0].rows[i].onmouseover = function() {
+						oldColor = this.style.background;
+						this.style.background = 'green';
+					};
+					
+					oTab.tBodies[0].rows[i].onmouseout = function() {
+						this.style.background  = oldColor;
+					};
+					
+					if (i % 2) {
+						oTab.tBodies[0].rows[i].style.background = '#CCC';
+					} else {
+						oTab.tBodies[0].rows[i].style.background = '#0AA';
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<table id="tab1" border="1" width="500">
+			<thead>
+				<td>ID</td>
+				<td>姓名</td>
+				<td>年龄</td>
+			</thead>
+			
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>飞龙</td>
+					<td>20</td>
+				</tr>
+				
+				<tr>
+					<td>2</td>
+					<td>关羽</td>
+					<td>21</td>
+				</tr>
+				
+				<tr>
+					<td>3</td>
+					<td>刘备</td>
+					<td>22</td>
+				</tr>
+				
+				<tr>
+					<td>4</td>
+					<td>吕布</td>
+					<td>19</td>
+				</tr>
+				
+				<tr>
+					<td>5</td>
+					<td>甘宁</td>
+					<td>18</td>
+				</tr>
+			
+			</tbody>
+			
+		</table>
+		
+	</body>
+</html>

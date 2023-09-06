@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模拟四则运算</title>	
+	</head>
+	<body>
+		<!--
+			分析:js模拟四则运算
+			a.键盘录入参与运算的数据. 输入操作符.
+			b.根据操作符来判断进行何种运算.
+			c.执行操作.
+		-->
+		<script type="text/javascript">
+			//1.接收键盘输入的第一个操作数
+			var firstNumber = prompt("请输入第一个操作数:", "0");
+			//强制类型转换
+			firstNumber = parseFloat(firstNumber);
+			//2.接收操作符
+			var operator = prompt("请输入操作符:", "+");
+			//3.接收键盘输入第二个操作数
+			var secondNumber = prompt("请输入第二个操作数:", "0");
+			secondNumber = parseFloat(secondNumber);
+			
+			//4.根据操作符处理相关运算
+			switch (operator){
+				case "+":
+					alert(firstNumber + secondNumber);
+					break;
+					
+				case "-":
+					alert(firstNumber - secondNumber);
+					break;
+						
+				case "*":
+					alert(firstNumber * secondNumber);
+					break;
+							
+				case "/":
+					alert(firstNumber / secondNumber);
+					break;
+			}
+			
+			
+		</script>
+	</body>
+</html>

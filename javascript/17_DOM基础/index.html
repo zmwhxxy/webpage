@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>DOM基础</title>
+		<script>
+			window.onload = function() {
+				// var oUl = document.getElementById('ul1');
+				
+				// alert(oUl.childNodes.length);
+				// nodeType == 1表示元素
+				// nodeType == 3表示文本
+				
+				// for (var i = 0; i < oUl.childNodes.length; i++) {
+				// 	if (oUl.childNodes[i].nodeType == 1) {
+				// 		oUl.childNodes[i].style.background = 'red';
+				// 	}
+				// }		
+				
+				// for (var i = 0; i < oUl.children.length; i++) {
+				// 	oUl.children[i].style.background = 'blue';
+				// }
+				
+				var aA = document.getElementsByTagName('a');
+				for (var i = 0; i < aA.length; i++) {
+					aA[i].onclick = function () {
+						this.parentNode.style.display = 'none';
+					};
+				}
+				
+				
+			};
+		</script>
+	</head>
+	
+	<body>
+		<ul id="ul1">
+			<li> dsfsfdsfdas <a href="javascript:;">隐藏</a> </li>
+			<li> sdfs <a href="javascript:;">隐藏</a> </li>
+			<li> 1232136464654 <a href="javascript:;">隐藏</a> </li>
+			<li> 他复活复活复活 <a href="javascript:;">隐藏</a> </li>
+			<li> 阿宿舍打打 <a href="javascript:;">隐藏</a> </li>
+			<li> 34543 <a href="javascript:;">隐藏</a> </li>
+		</ul>
+	</body>
+	
+</html>

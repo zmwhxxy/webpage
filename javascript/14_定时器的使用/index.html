@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>定时器的使用</title>
+		
+		<script type="text/javascript">
+			//	 间隔定时器
+			//1. 间隔定时器:每间隔一定时间, 执行一次任务.
+			//2. 开启定时器方法:setInterval
+			//3. 关闭定时器方法:clearInterval
+			
+			//	 延时定时器
+			//1. 延时定时器:延时一定事件后, 开始执行任务.
+			//2. 开启定时器的方法:setTimeout
+			//3. 关闭定时器的方法:clearTimeout
+			
+			
+			window.onload = function() {
+				var oBtn1 = document.getElementById('btn1');
+				var oBtn2 = document.getElementById('btn2');
+				var timer1 = null;
+				
+				//点击开启间隔定时器
+				oBtn1.onclick = function() {
+					timer1 = setInterval(function(){
+						alert('a');
+					}, 2000);
+				};
+				
+				//点击关闭间隔定时器
+				oBtn2.onclick = function() {
+					clearInterval(timer1);
+				};
+				
+				
+				var oBtn3 = document.getElementById('btn3');
+				var oBtn4 = document.getElementById('btn4');
+				var timer2 = null;
+				
+				//开启延迟定时器
+				oBtn3.onclick = function() {
+					timer2 = setTimeout(function() {
+						clearInterval(timer1);
+						alert('间隔定时器已经关闭');
+					}, 10000);
+				};
+				
+				//关闭延时定时器
+				oBtn4.onclick = function() {
+					clearTimeout(timer2);
+				};
+				
+			}
+			
+		</script>
+		
+	</head>
+	<body>
+		<input id="btn1" type="button" value="开启间隔定时器" />
+		<input id="btn2" type="button" value="关闭间隔定时器" />
+		<input id="btn3" type="button" value="开启延时定时器" />
+		<input id="btn4" type="button" value="关闭延时定时器" />
+	</body>
+</html>

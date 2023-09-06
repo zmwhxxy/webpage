@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>在父容器头部添加DOM元素</title>
+		<script>
+			window.onload = function () {
+				var oUl = document.getElementById('ul1');
+				var oBtn = document.getElementById('btn1');
+				var oTxt = document.getElementById('txt1');
+				
+				oBtn.onclick = function () {
+					var oLi = document.createElement('li');
+					var aLi = oUl.getElementsByTagName('li');
+					oLi.innerHTML = oTxt.value;
+					
+					//在aLi[0]前面添加元素oLi
+					if (aLi.length > 0) {
+						oUl.insertBefore(oLi, aLi[0]);
+					} else{
+						oUl.appendChild(oLi);
+					}
+					
+				};
+			};
+		</script>
+	</head>
+	<body>
+		<input id="txt1" type="text" />
+		<input id="btn1" type="button" value="创建li" />
+		<ul id="ul1"></ul>
+	</body>
+</html>

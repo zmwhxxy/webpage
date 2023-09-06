@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模拟用户登录</title>
+	</head>
+	<body>
+		<!--[if IE]>
+			模拟用户登录:
+				分析:
+					a.假设用户名和密码是已知的.
+					b.通过键盘录入用户和密码
+					c.把录入的用户名和密码和已知的数据进行
+					判断即可.
+					d.如果不相等,就提示登录成功.
+		<![endif]-->
+		
+		<script type="text/javascript">
+			//假设用户名和密码是已知的.
+			var username;
+			var password;
+			
+			while ("liuyi" != username || "111111" != password) {
+				username = prompt("请输入您的名字", "amtf");
+				password = prompt("请输入密码", "111111");
+				
+				//通过键盘录入用户名和密码
+				if("liuyi" == username && "111111" == password) {
+					alert("用户登录成功!");
+				} else {
+					alert("用户输入用户名或者密码有误!");
+				}
+			}
+			
+		</script>
+		
+	</body>
+</html>

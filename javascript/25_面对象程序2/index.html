@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>面向对象编程2</title>
+		<script>
+			function createPerson(name, qq) {
+				this.name = name;
+				this.qq = qq;
+				this.showName = function() {
+					alert(this.name);
+				};
+				this.showQQ = function() {
+					alert(this.qq);
+				};
+			}
+			
+			/*
+			new关键字用在函数前相当于:
+				在该函数开头添加:var this = new Object();
+				在该函数末尾添加:return this;
+			*/
+			
+			var obj = new createPerson('blue', '615796611');
+			var obj1 = new createPerson('sdf', '897456456');
+			
+			obj.showName();
+			obj1.showName();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

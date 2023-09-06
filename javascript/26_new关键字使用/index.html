@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>new关键字使用</title>
+		<script>
+			function show() {
+				alert(this);
+			};
+			
+			
+			/* 
+			在函数前使用new关键字,相当在函数开头添加var this = new Object();
+			在程序末尾添加return this;
+			*/
+			show();
+			new show();
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

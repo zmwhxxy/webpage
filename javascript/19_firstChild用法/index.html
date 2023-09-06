@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>firstChild用法</title>
+		<script>
+			 window.onload = function () {
+				 var oUl = document.getElementById('ul1');
+				 
+				 if (oUl.firstElementChild) {
+				 	//高版本浏览器兼容
+					oUl.firstElementChild.style.background = 'red';
+				 } else{
+				 	//低版本浏览器不支持
+					oUl.firstChild.style.background = 'red';
+				 }
+				 
+			 };
+		</script>
+	</head>
+	<body>
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</body>
+</html>
